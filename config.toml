@@ -1,0 +1,17 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = 'Hugo & Tailwind 3.0'
+disableKinds = ["taxonomy","taxonomyTerm"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+
+[params]
+  supabase_api_key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZscmlydXVwa3p3ZGNlZ2h1bWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTEyNDYyNTcsImV4cCI6MjAwNjgyMjI1N30.Wu47LcWVkIXBB6INbRyGD3F98oVKP3XyZbiJZURap0s"
+  supabase_url = "https://vlriruupkzwdceghumie.supabase.co"
+
+
+

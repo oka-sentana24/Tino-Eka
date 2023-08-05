@@ -1,0 +1,185 @@
+<section id="my-section">
+  <div class="relative w-full h-screen">
+    <div class="absolute w-full h-screen">
+      {{ readFile "static/background/third.svg" | safeHTML }}
+    </div>
+    <div class="relative w-full leading-7 text-greenLight text-left">
+      <div class="w-full max-w-md p-6 rounded-lg">
+        <h1 class="text-2xl font-bold mb-6 text-center">RSVP Form</h1>
+        <form id="rsvpForm">
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="name"
+              >Name:</label
+            >
+            <input
+              class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="name"
+              name="name"
+              type="text"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2"
+              >Attending:</label
+            >
+            <label class="inline-flex items-center mr-4">
+              <input
+                class="form-radio text-indigo-600"
+                type="radio"
+                name="attending"
+                value="yes"
+                required
+              />
+              <span class="ml-2">Yes</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input
+                class="form-radio text-indigo-600"
+                type="radio"
+                name="attending"
+                value="no"
+                required
+              />
+              <span class="ml-2">No</span>
+            </label>
+          </div>
+          <div class="mb-4">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="guests"
+              >Wish</label
+            >
+            <textarea
+              class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="guests"
+              name="guests"
+              type="number"
+              min="0"
+            ></textarea>
+          </div>
+          <div class="mb-4">
+            <button
+              class="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline bg-greenDark"
+              type="submit"
+            >
+              Submit RSVP
+            </button>
+          </div>
+        </form>
+        <div class="overflow-y-auto max-h-96 py-5">
+            <div id="dataDisplay"></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Load the Supabase client library using a script tag -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.17.0"></script>
+<script>
+  // Declare supabase variable in the global scope
+  let supabase;
+
+  // Function to fetch and display data from Supabase
+  async function displayDataFromSupabase() {
+    // Replace 'your_table_name' with your actual table name in Supabase
+    const tableName = "rsvp";
+
+    try {
+      const { data, error } = await supabase
+        .from(tableName)
+        .select("*").order('name', { ascending: false });
+      if (error) {
+        console.error("Error fetching data:", error.message);
+      } else {
+        console.log("Data fetched successfully:", data);
+        // Render the data on the page
+        const dataDisplay = document.getElementById("dataDisplay");
+        dataDisplay.innerHTML = "";
+
+        data.forEach((entry) => {
+          const entryDiv = document.createElement("div");
+          entryDiv.innerHTML = `
+              <div class="border border-gray-300 rounded p-2 mb-4">
+                <div class="flex  flex-cols-2 items-center justify-between">
+                    <p class="text-lg font-bold">${entry.name}</p>
+                    <p>date</p>
+                </div>
+                
+                <p class="text-sm">Attending: ${entry.attending}</p>
+                <p class="text-sm">wish: ${entry.guests}</p>
+              </div>`;
+          dataDisplay.appendChild(entryDiv);
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", async function () {
+    // Import the createClient function from the Supabase module
+    const { createClient } = window.supabase;
+
+    // Supabase API URL and API Key
+    const supabaseUrl = "https://vlriruupkzwdceghumie.supabase.co";
+    const supabaseKey =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZscmlydXVwa3p3ZGNlZ2h1bWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTEyNDYyNTcsImV4cCI6MjAwNjgyMjI1N30.Wu47LcWVkIXBB6INbRyGD3F98oVKP3XyZbiJZURap0s";
+
+    // Initialize Supabase client
+    supabase = createClient(supabaseUrl, supabaseKey);
+
+    // Get a reference to the form element
+    const rsvpForm = document.getElementById("rsvpForm");
+
+    // Function to insert data into Supabase
+    async function insertDataToSupabase(data) {
+      // Replace 'your_table_name' with your actual table name in Supabase
+      const tableName = "rsvp";
+
+      try {
+        const { data: insertedData, error } = await supabase
+          .from(tableName)
+          .insert([data]);
+        if (error) {
+          console.error("Error inserting data:", error.message);
+        } else {
+          console.log("Data inserted successfully:", insertedData);
+          // You can perform further actions here if needed, e.g., show a success message to the user.
+        }
+      } catch (error) {
+        console.error("Error inserting data:", error.message);
+      }
+    }
+
+    // Add an event listener to the form submission
+    rsvpForm.addEventListener("submit", async function (event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Get form data
+      const formData = new FormData(rsvpForm);
+      const name = formData.get("name");
+      const attending = formData.get("attending");
+      const guests = formData.get("guests");
+
+      // Create an object with the form data
+      const data = {
+        name,
+        attending,
+        guests,
+      };
+
+      // Insert data into Supabase
+      await insertDataToSupabase(data);
+      // Reset the form after successful submission
+      rsvpForm.reset();
+
+      // Fetch and display updated data from Supabase
+      await displayDataFromSupabase();
+    });
+
+    // Fetch and display initial data from Supabase on page load
+    await displayDataFromSupabase();
+  });
+</script>

@@ -1,0 +1,75 @@
+<section class="grid col-span-1">
+  <div class="h-screen relative">
+    <img src="/photo/first.jpg" alt="hero" class="object-cover bg-repeat relative w-full"/>
+    <div style="background-image: url('/background/first.svg')" class="h-[469px] absolute bottom-0 w-full bg-center">
+      <div class="text-center mt-[152px]">
+        <div>
+          <h2 class="text-brownLight">The Wedding Of</h1>
+          <h1 class="text-6xl font-title text-brownDark mt-[10px]">Tino & Eka</h1>
+        </div>
+        <div class="px-10">
+          <div class="leading-10">
+            <span class="text-sm text-brownLight">Kepada Yth.Bapak/Ibu/Saudara/i</span>
+            <h1>
+              Wayan Lama Sekali
+            </h1>
+            <div class="w-full flex items-center justify-center">
+              {{ readFile "static/icon/line.svg" | safeHTML }}
+            </div>
+          </div>
+          <span class="text-sm text-brownLight"
+            >Mohon maaf jika ada kesalahan <br/> penulisan nama / gelar</span
+          >
+        </div>
+        <button class="mt-5 border bg-brownLight border-brownDark rounded-md p-3 text-white" id="scroll-button">
+          Buka Undangan
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document
+    .getElementById("scroll-button")
+    .addEventListener("click", function () {
+      var targetSection = document.getElementById("my-section");
+      var offset = targetSection.offsetTop;
+
+      // Perform smooth scrolling
+      window.scrollTo({
+        top: offset,
+        behavior: "smooth",
+      });
+      setTimeout(function () {
+        var targetSection = document.getElementById("two-section");
+        targetSection.classList.toggle("animate-fade-in-up");
+      }, 1000);
+    });
+</script>
+
+<style>
+  @keyframes scrollAnimation {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  
+  .animate-scroll {
+    animation: scrollAnimation 1s ease-in-out infinite;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 50%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
