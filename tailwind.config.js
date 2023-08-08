@@ -6,11 +6,11 @@ module.exports = {
       body: [""]
     },
     colors: {
-      white: "#FFFFFF",
-      brownLight: "#825B48",
-      brownDark: "#6D4A24",
-      greenLight: "#A5C0B5",
-      greenDark: "#6F8E7E",
+      gold:"#CDA33E",
+      white:"#fff",
+      black:"#000",
+      greenLight: "#003C49",
+      greenDark: "#0D1928",
     },
     extend: {
       typography: {
