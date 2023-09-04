@@ -1,35 +1,41 @@
 <section class="grid col-span-1">
-  <div class="relative" style="background-image: url('/photo/first.jpg'); background-size: 100% auto; min-height: 55vh;"></div>
-  <div class="h-[45vh]">
+  <div class="relative" style="background-image: url('/photo/DSCF6300.jpg'); background-size: 100% auto; min-height: 44vh;"></div>
+  <div class="h-[63vh]">
     <div class="relative z-50">
-      <div class="border-4 border-gold"></div>
-      <div class="w-full flex items-center justify-center relative bottom-[26px]">
-        <button class="bg-gold py-2 px-4 rounded-md text-white shadow-lg shadow-black" id="scroll-button">
-          Buka Undangan
-        </button>
-      </div>
+      <div class="border-4 border-gray-800"></div>
     </div>
     <div style="background-image: url('/Icon/home.svg'); background-size: 100% auto;
     position: relative;
-    bottom: 45px;
+    bottom: 0px;
     background-repeat: no-repeat;
     background-position: center;">
-    <div class="h-[45vh] text-center leading-10 items-center justify-center grid text-gold">
-      <div>
-        <div>
+    <div class="h-[55vh] text-center leading-10 items-center justify-center grid text-gold">
+      <div class="py-5 text-md">
+        <h2>
           The Wedding Of
+        </h2>
+        <h1 class="font-title text-5xl">
+          Tino & Eka
+        </h1>
+
+        <div>
+          <p>
+            Kepada Yth.Bapak/Ibu/Saudara/i
+          </p>
+           <span id="guest-name-param" class=" text-lg font-extrabold"></span>
+          <br>
+          <p>
+            <hr />
+            Mohon maaf jika ada kesalahan <br/> penulisan nama / gelar
+          </p>
         </div>
-        <h1 class="text-5xl leading-10 font-title py-3">Tino & Eka</h1>
-        <div class="mb-[50px] text-sm">
-          Kepada Yth.Bapak/Ibu/Saudara/i
-        </div>
-        <div class="text-sm">
-          <hr />
-          Mohon maaf jika ada kesalahan <br/> penulisan nama / gelar
-        </div>
+
+        <button class="border border-gold px-5 py-1 text-gold mt-5 rounded-md" id="scroll-button">
+          Buka Undangan
+        </button> 
         </div>
       </div>
-  </div>
+    </div>
   </div>
 </section>
 
@@ -46,6 +52,18 @@
         behavior: "smooth",
       });
     });
+
+    // Function to extract query parameter from URL
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+  }
+
+  // Display the "guestName" query parameter in the span element
+  const guestNameParam = getQueryParam("guestName");
+  if (guestNameParam) {
+      document.getElementById("guest-name-param").textContent = guestNameParam;
+  }
 </script>
 
 <style>

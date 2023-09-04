@@ -1,14 +1,11 @@
 <section id="my-section">
   <div class="relative w-full h-screen">
-    <div class="absolute w-full h-screen">
-      {{ readFile "static/background/third.svg" | safeHTML }}
-    </div>
-    <div class="relative w-full leading-7 text-greenLight text-left">
+    <div class="relative w-full leading-7 text-left text-gold">
       <div class="w-full max-w-md p-6 rounded-lg">
         <h1 class="text-2xl font-bold mb-6 text-center">RSVP Form</h1>
         <form id="rsvpForm">
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="name"
+            <label class="block text-gold text-sm font-bold mb-2" for="name"
               >Name:</label
             >
             <input
@@ -16,11 +13,12 @@
               id="name"
               name="name"
               type="text"
+              placeholder="Name"
               required
             />
           </div>
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2"
+            <label class="block text-gold text-sm font-bold mb-2"
               >Attending:</label
             >
             <label class="inline-flex items-center mr-4">
@@ -46,7 +44,7 @@
           </div>
           <div class="mb-4">
             <label
-              class="block text-gray-700 text-sm font-bold mb-2"
+              class="block text-gold text-sm font-bold mb-2"
               for="guests"
               >Wish</label
             >
@@ -56,11 +54,12 @@
               name="guests"
               type="number"
               min="0"
+              placeholder="Wish"
             ></textarea>
           </div>
           <div class="mb-4">
             <button
-              class="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline bg-greenDark"
+              class="bg-slate-400 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline bg-greenDark"
               type="submit"
             >
               Submit RSVP

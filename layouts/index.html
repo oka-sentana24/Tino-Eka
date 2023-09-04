@@ -2,36 +2,26 @@
 <div class="md:max-w-sm mx-auto relative overflow-hidden bg-gradient-to-r from-greenLight to-greenDark">
     {{ partial "banner" . }}
     {{ partial "second" . }}
-    {{/*  {{ partial "second" . }}
     {{ partial "thired" . }}
     {{ partial "gallery" . }}
-    {{ partial "form" . }}  */}}
+    {{ partial "form" . }}
+    {{ partial "footer" .}}
 
-    <div class="music-player fixed bottom-0">
-        <audio id="myAudio" controls autoplay>
-            {{/*  <source src="all-my-love-inspiring-piano-orchestral-142037.mp3" type="audio/mp3">  */}}
+    {{/*  <div class="music-player">
+        <audio id="myAudio"  autoplay>
+            <!-- Commented out sources -->
             <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
         </audio>
-        <div class="music-controls">
-            <i id="playBtn" class="icon-play"></i>
-            <i id="stopBtn" class="icon-stop"></i>
+        <div class="bg-white rounded-full" style="border-radius: 50%;">
+            {{ if .Params.playBtn }}
+                <i id="playBtn" class="icon-play">▶</i>
+            {{ end }}
+    
+            {{ if .Params.stopBtn }}
+                <i id="stopBtn" class="icon-stop">⏹</i>
+            {{ end }}
         </div>
-    </div>
+    </div>  */}}
 </div>
-
-<script>
-    const audio = document.getElementById("myAudio");
-    const playBtn = document.getElementById("playBtn");
-    const stopBtn = document.getElementById("stopBtn");
-
-    playBtn.addEventListener("click", () => {
-        audio.play();
-    });
-
-    stopBtn.addEventListener("click", () => {
-        audio.pause();
-        audio.currentTime = 0;
-    });
-</script>
 
 {{ end }}

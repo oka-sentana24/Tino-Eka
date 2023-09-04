@@ -5,13 +5,6 @@ module.exports = {
       title: ["Great Vibes"],
       body: [""]
     },
-    colors: {
-      gold:"#CDA33E",
-      white:"#fff",
-      black:"#000",
-      greenLight: "#003C49",
-      greenDark: "#0D1928",
-    },
     extend: {
       typography: {
         DEFAULT: {
@@ -20,6 +13,13 @@ module.exports = {
             "code::after": { content: "" },
           },
         },
+      },
+      colors: {
+        gold:"#CDA33E",
+        white:"#fff",
+        black:"#000",
+        greenLight: "#003C49",
+        greenDark: "#0D1928",
       },
       keyframes: {
         "fade-in-down": {
