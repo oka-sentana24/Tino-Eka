@@ -5,4 +5,4 @@ To start developing: npm run start
 To generate the site HTML: npm run build
 npm run start will run two command parallel: npx tailwindcss -i ./assets/css/main.css -o ./assets/css/style.css &amp;ndash;watch
 and hugo server
-Note: When you start npm run start a style.css must exist - or you get an error! Just do a Ctrl+C and run npm run start - even though you got an error but a style was written anyway and 2nd time round it should start fine.</description></item></channel></rss>
+Note: When you start npm run start a style.css must exist - or you get an error! Just do a Ctrl+C and run npm run start - even though you got an error but a style was written anyway and 2nd time round it should start fine.</description></item><item><title>My Music</title><link>/my-music/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/my-music/</guid><description>My Music Page This is a page about my favorite music.</description></item></channel></rss>
