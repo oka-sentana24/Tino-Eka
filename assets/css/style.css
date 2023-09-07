@@ -1147,6 +1147,26 @@ video {
   height: 45vh;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
+.h-\[38\] {
+  height: 38;
+}
+
+.h-\[38rem\] {
+  height: 38rem;
+}
+
+.h-\[38vh\] {
+  height: 38vh;
+}
+
+.h-\[92vh\] {
+  height: 92vh;
+}
+
 .max-h-96 {
   max-height: 24rem;
 }
@@ -1391,6 +1411,21 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.py-\[\] {
+  padding-top: ;
+  padding-bottom: ;
+}
+
+.py-\[4rem\] {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .pb-5 {
