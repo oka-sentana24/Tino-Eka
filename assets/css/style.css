@@ -1038,6 +1038,14 @@ video {
   top: 50%;
 }
 
+.top-\[121p\] {
+  top: 121p;
+}
+
+.top-\[121px\] {
+  top: 121px;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -1579,7 +1587,29 @@ video {
   color: rgb(14 116 144 / var(--tw-text-opacity));
 }
 
+@media (min-width: 640px) {
+  .sm\:relative {
+    position: relative;
+  }
+
+  .sm\:top-\[121px\] {
+    top: 121px;
+  }
+
+  .sm\:top-\[\] {
+    top: ;
+  }
+}
+
 @media (min-width: 768px) {
+  .md\:relative {
+    position: relative;
+  }
+
+  .md\:top-\[121px\] {
+    top: 121px;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
