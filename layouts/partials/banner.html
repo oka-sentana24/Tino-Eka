@@ -8,7 +8,7 @@
     background-position: left bottom;">
     <div class="h-[55vh] flex items-center justify-center">
       <div class=" bg-white w-[73%] h-[83%] shadow-2xl border-2 border-gold">
-        <div class="h-[45vh] grid items-center justify-center">
+        <div class="h-[45vh] grid items-center justify-center fade-in">
           <div class="text-center text-gold">
             <h3>The Wedding Of</h3>
           </div>
@@ -31,7 +31,7 @@
               penulisan nama / gelar
             </span>
           </div>
-          <div class="text-center">
+          <div class="text-center grid z-50 px-10">
             <button id="scroll-button" class="border-2 border-gold items-center rounded-lg py-2 px-5 text-gold">
               Buka Undangan
             </button>
@@ -85,19 +85,27 @@
       transform: translateY(-8px);
     }
   }
-  
+
   .animate-scroll {
     animation: scrollAnimation 1s ease-in-out infinite;
   }
 
-  @keyframes fadeInUp {
+  @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translate3d(0, 50%, 0);
     }
     to {
       opacity: 1;
-      transform: none;
     }
+  }
+
+  /* Apply the animation to your content */
+  .fade-in {
+    animation: fadeIn 1s ease-in;
+  }
+
+  /* Initially hide scrollbars */
+  body.initial-scroll-hidden {
+    overflow: hidden;
   }
 </style>
