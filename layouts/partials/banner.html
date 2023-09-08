@@ -1,5 +1,5 @@
 <section class="grid col-span-1">
-  <div class="relative" style="background-image: url('/compress/DSCF6309.jpeg'); background-size: 100% auto; min-height: 44vh;"></div>
+  <div class="relative" style="background-image: url('/compress/DSCF6300-min.jpg'); background-size: 100% auto; min-height: 44vh;"></div>
   <div class="h-[57vh]">
     <div style="background-image: url('/Icon/home_1.svg'); background-size: inherit ;
     position: relative;
@@ -32,81 +32,12 @@
             </span>
           </div>
           <div class="text-center">
-            <button class="border-2 border-gold items-center rounded-lg py-2 px-5 text-gold">
+            <button id="scroll-button" class="border-2 border-gold items-center rounded-lg py-2 px-5 text-gold">
               Buka Undangan
             </button>
           </div>
         </div>
       </div>
-      {{/*  <div class=" bg-white border border-gold shadow-2xl">
-        <div class="text-center">
-          <h1>The Wedding Of</h1>
-          <h1 class="text-5xl font-title py-5">
-            <strong>
-              Tino & Eka
-            </strong>
-          </h1>
-          <p>
-            Kepada Yth.Bapak/Ibu/Saudara/i
-          </p>
-            <br/>
-            <br/>
-            <br/>
-            <span>
-              <hr class="border-t-2 border-gold  mx-9">
-              Mohon maaf jika ada kesalahan
-              penulisan nama / gelar
-            </span>
-            <br/>
-            <br/>
-            <button class=" border-2 border-gold items-center  px-5 mb-5 rounded-lg">
-              Buka Undangan
-            </button>
-            
-
-
-
-        </div>
-      </div>  */}}
-      {{/*  <div class=" bg-white border-2 border-gold m-11 shadow-2xl relative"> 
-        <div class="text-center py-3">
-          <H1>
-           
-            The Wedding Of
-          </H1>
-          <H1 class="text-5xl font-title py-5">
-            <strong>
-              Tino & Eka
-            </strong>
-          
-          </H1>
-          <p>
-            Kepada Yth.Bapak/Ibu/Saudara/i 
-          </p>
-
-         
-          <br>
-           
-            <span>
-              <hr class="border-t-2 border-gold  mx-9">
-              Mohon maaf jika ada kesalahan
-              penulisan nama / gelar
-            </span>
-        </div>
-
-        <button class=" border-2 border-gold items-center  px-5 mb-5 rounded-lg">
-          Buka Undangan
-        </button>
-      </div>
-     <div style="Background-image: url(/Icon/home_2.svg);
-     position: absolute;
-     background-size: inherit;
-     width: 100%;
-     height: 100%;
-     background-repeat: no-repeat;
-     background-position: top right;">
-     </div>  */}}
-
      <div style="Background-image: url(/Icon/home_2.svg);
      position: absolute;
      background-size: inherit;
@@ -115,37 +46,35 @@
      background-repeat: no-repeat;
      background-position: top right;">
      </div>
-      
     </div>
   </div>
 </section>
 
 <script>
-  document
-    .getElementById("scroll-button")
-    .addEventListener("click", function () {
-      var targetSection = document.getElementById("my-section");
-      var offset = targetSection.offsetTop - 13;
+  document.getElementById("scroll-button").addEventListener("click", function () {
+    var targetSection = document.getElementById("my-section");
+    var offset = targetSection.offsetTop - 13;
 
-      // Perform smooth scrolling
-      window.scrollTo({
-        top: offset,
-        behavior: "smooth",
-      });
+    // Perform smooth scrolling
+    window.scrollTo({
+      top: offset,
+      behavior: "smooth",
     });
+  });
 
-    // Function to extract query parameter from URL
-    function getQueryParam(name) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(name);
+  // Function to extract query parameter from URL
+  function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
   }
 
   // Display the "guestName" query parameter in the span element
   const guestNameParam = getQueryParam("guestName");
   if (guestNameParam) {
-      document.getElementById("guest-name-param").textContent = guestNameParam;
+    document.getElementById("guest-name-param").textContent = guestNameParam;
   }
 </script>
+
 
 <style>
   @keyframes scrollAnimation {

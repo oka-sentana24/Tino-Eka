@@ -5,7 +5,7 @@ background-size: contain;
 background-position: center;
 height:100vh;
 ">
-  <div class="grid items-center justify-center text-center text-gold px-8 h-[92vh] py-[4rem]">
+  <div class="grid items-center justify-center text-center text-gold px-8 h-[92vh] py-[4rem] animate-load">
 
 
       <h2>The Beloved</h2>
@@ -46,3 +46,59 @@ height:100vh;
   </div>
 </section>
 
+
+<style>
+  /* Define the loading animation */
+  @keyframes loadAnimation {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Apply the loading animation to the content */
+  .animate-load {
+    animation: loadAnimation 1s ease-in-out;
+  }
+
+  /* Other styles for your section */
+  /* ... */
+</style>
+
+<script>
+  // Function to check if an element is in the viewport
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Function to load data and trigger animation
+  function loadDataAndAnimate() {
+    // Simulate data loading (You can replace this with your actual data loading logic)
+    setTimeout(function () {
+      // Remove the "animate-load" class to trigger the animation
+      const section = document.getElementById("my-section");
+      section.classList.remove("animate-load");
+    }, 2000); // Adjust the time delay as needed
+  }
+
+  // Add a scroll event listener to check when the section is in view
+  window.addEventListener("scroll", function () {
+    const section = document.getElementById("my-section");
+    if (isElementInViewport(section)) {
+      // If the section is in view, load data and trigger animation
+      loadDataAndAnimate();
+      // Remove the scroll event listener to prevent multiple triggers
+      window.removeEventListener("scroll", this);
+    }
+  });
+</script>
