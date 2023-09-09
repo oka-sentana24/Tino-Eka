@@ -1,0 +1,67 @@
+<div class="relative">
+    <div style="background-image: url(/compress/DSCF6395-min.jpg);
+    background-position: center;
+    height: 33vh;
+    width: 100%;
+    background-size: cover;">
+    </div>
+    <div class="bg-white relative mx-5 h-[16vh] rounded-md bottom-4 shadow-2xl text-center py-2 text-gold justify-center items-center">
+        
+            <h1>UPACARA MANUSA YADNYA</h1>
+            <p>Pawiwahan</p>
+    
+            <div class=" flex items-center justify-center gap-10 text-gold">
+                <div class="grid">
+                    <h1 id="days" class="text-xl">00</h1>
+                    <span class="text-xs">hari</span>
+                </div>
+                <div class="grid">
+                    <h1 id="hours" class="text-xl">00</h1>
+                    <span class="text-xs">jam</span>
+                </div>
+                <div class="grid">
+                    <h1 id="minutes" class="text-xl">00</h1>
+                    <span class="text-xs">menit</span>
+                </div>
+    
+                <div class="grid">
+                    <h1 id="seconds" class="text-xl">00</h1>
+                    <span class="text-xs">detik</span>
+                </div>
+            </div>
+    </div>
+</div>
+
+<script>
+    // Set the date for your event (YYYY, MM, DD, HH, MM, SS)
+    const eventDate = new Date(2023, 10, 1, 12, 0, 0); // Replace with your event date and time
+
+    function updateCountdown() {
+        const currentDate = new Date();
+        const timeDifference = eventDate - currentDate;
+
+        if (timeDifference <= 0) {
+            // Event has already occurred
+            document.getElementById("days").textContent = "00";
+            document.getElementById("hours").textContent = "00";
+            document.getElementById("minutes").textContent = "00";
+            document.getElementById("seconds").textContent = "00";
+        } else {
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = String(days).padStart(2, "0");
+            document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+        }
+    }
+
+    // Update the countdown every second
+    setInterval(updateCountdown, 1000);
+
+    // Initial call to set the countdown immediately
+    updateCountdown();
+</script>

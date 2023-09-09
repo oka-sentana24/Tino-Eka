@@ -3,9 +3,11 @@
   {{ partial "head.html" . }}
   <body id="page-top" class="index">
  
-    <div id="main-content" class="opacity-0 transition-opacity duration-1000 page-opening-animation">
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000 page-opening-animation h-screen">
       <!-- Your main content here -->
+        {{ partial "banner.html" . }}
         {{ partial "second.html" . }}
+        {{ partial "thired.html" . }}
     </div>
 
     <style>

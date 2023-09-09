@@ -14,120 +14,129 @@
   </div>
 
   <!-- Main content of your app -->
-  <div id="main-content" class="opacity-0 transition-opacity duration-1000 ">
-    <div class="relative" style="background-image: url('/compress/DSCF6300-min.jpg'); background-size: 100% auto; min-height: 44vh;"></div>
-  <div class="h-[57vh]">
-    <div style="background-image: url('/Icon/home_1.svg'); background-size: inherit ;
+  <div id="main-content" class="opacity-0 transition-opacity duration-1000">
+    <div class="h-screen bg-white" style="background-image: url('/Icon/home_1.svg'); background-size: inherit ;
     position: relative;
-    bottom: 0px;
+    bottom: 0;
     background-repeat: no-repeat;
     background-position: left bottom;">
-    <div class="h-[55vh] flex items-center justify-center">
-      <div class=" bg-white w-[73%] h-[83%] shadow-2xl border-2 border-gold">
-        <div class="h-[45vh] grid items-center justify-center fade-in text-base">
-            <div class="text-center text-gold grid items-center justify-center" style="padding:0px 10px">
-                <div>
-                    <h3 style="font-size: 32px; padding:20px 0px;">Tino & Eka</h3>
-                </div>
-                <div>
-                    <p>Kepada Yth.Bapak/Ibu/Saudara/i</p>
-                    <br>
-                    <br>
-                    <p>Tanpa Mengurangi Rasa Hormat, Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>
-                </div>
-                <div class="my-5 relative z-50">
-                    <button id="close-button" class="border-2 border-gold items-center rounded-lg py-2 px-5 text-gold">
-                        Buka Undangan
-                    </button>
-                </div>
-               
-            </div>
-        </div>
-      </div>
-     <div style="Background-image: url(/Icon/home_2.svg);
-     position: absolute;
-     background-size: inherit;
-     width: 100%;
-     height: 100%;
-     background-repeat: no-repeat;
-     background-position: top right;">
-     </div>
-    </div>
-  </div>
-  </div>
-</div>
-
-<script>
-    // Delay hiding the loading screen for 3 seconds (3000 milliseconds)
-    setTimeout(function () {
-      // Hide the loading screen
-      var loadingScreen = document.getElementById("loading-screen");
-      loadingScreen.style.opacity = "0";
-      loadingScreen.style.pointerEvents = "none"; // Make sure clicks don't go through the loading screen
-      // Fade in the main content
-      var mainContent = document.getElementById("main-content");
-      mainContent.style.opacity = "1";
-  
-      // Add an event listener to the button for redirection
-      var closeButton = document.getElementById("close-button");
-      closeButton.addEventListener("click", function () {
-        // Redirect to another page or perform the desired action
-        window.location.href = "/second/"; // Replace with the URL of your second page
-      });
-    }, 3000);
-  </script>
-  
-
-<style>
-    /* Style for the loading screen container */
-    #loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
+      <div style="
+        background-image: url('/compress/DSCF6300-min.jpg');
+        background-size: 100% auto;
+        min-height: 44vh;
+      "></div>
+      <div style="Background-image: url(/Icon/home_2.svg);
+      position: absolute;
+      background-size: inherit;
       width: 100%;
       height: 100%;
-      background-color: white; /* Semi-transparent white background */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 1s ease-in-out; /* Smooth opacity transition */
-      z-index: 10000; /* Set the z-index to 10000 */
-    }
+      background-repeat: no-repeat;
+      background-position: top right;">
+      <div class="bg-white h-[47vh] items-center justify-center border-2 border-gold m-10 shadow-2xl">
+        <div class="h-[46vh] grid leading-8 items-center justify-center text-center">
+          <div class=" leading-10 text-gold">
+            <h3>Undangan Pernikahan</h3>
+            <h1 class="text-center text-gold font-bold text-4xl font-title">Tino & Eka</h1>
+          </div>
+          <div class=" leading-10 text-sm text-gold">
+            <p>Kpd Bpk/Ibu/Saudara/i</p>
   
-    /* Style for the loading animation container */
-    #loading-animation {
-      opacity: 0; /* Initially hidden */
-      transition: opacity 0.5s ease-in-out; /* Smooth opacity transition */
+            <!-- Placeholder for displaying guestName -->
+            <p id="guest-name-placeholder" class=" text-lg font-bold py-2"></p>
+            
+            <p class="text-sm text-gold">
+              Tanpa Mengurangi Rasa Hormat, Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.
+            </p>
+          </div>
+          <div class="my-5 relative z-50">
+            <button id="close-button" class="border-2 border-gold items-center rounded-lg py-2 px-5 text-gold text-sm">
+                Buka Undangan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // Delay hiding the loading screen for 3 seconds (3000 milliseconds)
+  setTimeout(function () {
+    // Hide the loading screen
+    var loadingScreen = document.getElementById("loading-screen");
+    loadingScreen.style.opacity = "0";
+    loadingScreen.style.pointerEvents = "none"; // Make sure clicks don't go through the loading screen
+    // Fade in the main content
+    var mainContent = document.getElementById("main-content");
+    mainContent.style.opacity = "1";
+
+    // Add an event listener to the button for redirection
+    var closeButton = document.getElementById("close-button");
+    closeButton.addEventListener("click", function () {
+      // Redirect to another page or perform the desired action
+      window.location.href = "/second/"; // Replace with the URL of your second page
+    });
+
+    // Retrieve and display the "guestName" query parameter
+    const url = new URL(window.location.href);
+    const guestName = url.searchParams.get("to");
+    if (guestName) {
+      // Display the guestName in the placeholder element
+      var guestNamePlaceholder = document.getElementById("guest-name-placeholder");
+      guestNamePlaceholder.textContent =  decodeURIComponent(guestName);
     }
-  
-    /* Style for the loading dots animation */
-    .loading-dots {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  }, 3000);
+</script>
+
+<style>
+  /* Style for the loading screen container */
+  #loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Semi-transparent white background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease-in-out; /* Smooth opacity transition */
+    z-index: 10000; /* Set the z-index to 10000 */
+  }
+
+  /* Style for the loading animation container */
+  #loading-animation {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease-in-out; /* Smooth opacity transition */
+  }
+
+  /* Style for the loading dots animation */
+  .loading-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Style for individual loading dots (adjust as needed) */
+  .dot {
+    width: 12px;
+    height: 12px;
+    background-color: #3498db; /* Dot color */
+    border-radius: 50%;
+    margin: 0 4px; /* Adjust spacing between dots */
+    animation: bounce 3s infinite ease-in-out;
+  }
+
+  /* Keyframes animation for the loading dots */
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
     }
-  
-    /* Style for individual loading dots (adjust as needed) */
-    .dot {
-      width: 12px;
-      height: 12px;
-      background-color: #3498db; /* Dot color */
-      border-radius: 50%;
-      margin: 0 4px; /* Adjust spacing between dots */
-      animation: bounce 3s infinite ease-in-out;
+    50% {
+      transform: translateY(-10px);
     }
-  
-    /* Keyframes animation for the loading dots */
-    @keyframes bounce {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-  </style>
-  
+  }
+</style>
+
 {{ end }}
