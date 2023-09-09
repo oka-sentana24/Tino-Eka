@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+  {{ partial "head.html" . }}
+  <body id="page-top" class="index">
+ 
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000 page-opening-animation">
+      <!-- Your main content here -->
+        {{ partial "second.html" . }}
+    </div>
+
+    <style>
+      /* CSS for the opening animation */
+      .page-opening-animation {
+        opacity: 0; /* Initial opacity set to 0 (hidden) */
+        transform: translateY(20px); /* Initial position offscreen */
+        transition: opacity 1s ease, transform 1s ease; /* Smooth transition animation */
+      }
+      
+      /* CSS for the active state of the animation */
+      .page-opening-animation-active {
+        opacity: 1; /* Final opacity set to 1 (visible) */
+        transform: translateY(0); /* Final position onscreen */
+      }
+    </style>
+    <script>
+      // Delay the animation to allow time for other page loading processes
+      setTimeout(function () {
+        var mainContent = document.getElementById("main-content");
+        mainContent.classList.add("page-opening-animation-active"); // Add the animation class
+      }, 1000); // Adjust the delay (in milliseconds) as needed
+    </script>
+  </body>
+</html>

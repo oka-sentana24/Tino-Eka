@@ -14,4 +14,8 @@ disableKinds = ["taxonomy","taxonomyTerm"]
   supabase_url = "https://vlriruupkzwdceghumie.supabase.co"
 
 
+[permalinks]
+second = "/test"
+
+
 
