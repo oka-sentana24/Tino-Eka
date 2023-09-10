@@ -9,18 +9,61 @@
   "
 >
   <div class="grid items-center justify-center text-center gap-2 h-full">
-    <div class="my-5 leading-7 border-2 border-gold p-5 text-gold">
-      <div class="mb-9 border-b border-gold">
-        <h1 class=" text-xl">Resepsi Pernikahan</h1>
+    {{/*  <div class="mx-5">  */}}
+      <div class="my-2 leading-7 py-2 text-gold">
+        <h1 class=" text-xl font-bold">Resepsi Pernikahan</h1>
       </div>
+  
+      <div class="text-gold">
+        <h1 class="text-gold font-semibold text-xl"> Jumat, 22 September 2023</h1>
+        <h1 class="text-gold font-semibold text-xl "> 11.00 WITA - selesai</h1>
+      </div>
+      <div class="text-center text-sm">
+        <button id="save-the-date-button" class="border border-gold py-2 px-5 rounded text-sm bg-gold text-white">Save the date</button>
+      </div>
+  
+      <div class="text-center text-gold text-sm">
+        <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila bapak/ibu/saudara/i berkenan hadir untuk memberikan doa restu pada acara pernikahan putra – putri kami.</p>
+      </div>
+      <hr  class="border border-gold"/>
+      <div class="leading-10">
+        <h1 class="text-xl text-gold font-bold">Lokasi Upacara</h1>
+        <p  class="text-gold text-sm">Jl. Mahendradata, Gang Keko Permai No. 16, Bitera, Gianyar</p>
+        <div class="mt-5 text-center mb-3 border-4 border-gold rounded-md">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d246.6020433825684!2d115.31574182523156!3d-8.534993537623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1690045666229!5m2!1sen!2sid" width="100%" height="209" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        
+        <div>
+          <button class="border border-gold py-2 px-5 rounde bg-gold text-white text-sm">
+            <a href="https://goo.gl/maps/Bzg9EdgL58Aa2TLQA" target="_blank">Kunjungi Lokasi via Google Maps</a>
+          </button>
+        </div>
+      </div>
+    {{/*  </div>  */}}
     
-      <div >
-        <h1> </h1>
-        <h1> 01 November 2023</h1>
-        <h1> 13.00 WITA - selesai</h1>
-        <h1>Jl. Mahendradata Gang Keko Bitera gianyar</h1>
-      </div>
-    </div>
-   
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const button = document.getElementById('save-the-date-button');
+
+    button.addEventListener('click', function () {
+      const event = new iCalendar();
+      event.set('summary', 'Resepsi Pernikahan');
+      event.set('location', 'Jl. Mahendradata Gang Keko Bitera Gianyar');
+      event.set('description', 'Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila bapak/ibu/saudara/i berkenan hadir untuk memberikan doa restu pada acara pernikahan putra – putri kami.');
+      event.set('start', '20230922T130000');
+      event.set('end', '20230922T235959');
+
+      // Create a link to download the event
+      const link = document.createElement('a');
+      link.href = 'data:text/calendar;charset=utf8,' + encodeURIComponent(event.toString());
+      link.download = 'SaveTheDate.ics';
+
+      // Trigger a click event on the link to initiate the download
+      link.click();
+    });
+  });
+</script>
+

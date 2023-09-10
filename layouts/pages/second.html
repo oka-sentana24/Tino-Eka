@@ -2,12 +2,32 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
   {{ partial "head.html" . }}
   <body id="page-top" class="index">
- 
+    <audio id="background-audio" autoplay loop>
+      <source src="/musik/Penenang_Hati.mp3" type="audio/mp3">
+    </audio>
+
+    <div id="audio-control-container">
+      <button id="play-pause-button" class="audio-control-button">
+        <i id="play-icon" class="fas fa-play">
+          <img src="/Icon/pause.svg" alt="pause">
+        </i>
+        <i id="pause-icon" class="fas fa-pause">
+          <img src="/Icon/play_arrow.svg" alt="start">
+        </i>
+      </button>
+    </div>
+  
+
     <div id="main-content" class="opacity-0 transition-opacity duration-1000 page-opening-animation h-screen">
-      <!-- Your main content here -->
+      <div class="md:max-w-sm mx-auto relative overflow-hidden">
+        <!-- Your main content here -->
         {{ partial "banner.html" . }}
         {{ partial "second.html" . }}
         {{ partial "thired.html" . }}
+        {{ partial "gallery.html" . }}
+        {{ partial "form.html" .}}
+        {{ partial "footer.html" .}}
+      </div>
     </div>
 
     <style>
@@ -23,13 +43,62 @@
         opacity: 1; /* Final opacity set to 1 (visible) */
         transform: translateY(0); /* Final position onscreen */
       }
+
+      /* CSS for the audio control button container */
+      #audio-control-container {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 100; /* Set the z-index to 100 */
+      }
+
+      /* CSS for the audio control button */
+      .audio-control-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+        color: #333; /* Icon color */
+        text-align: center;
+        background-color: red;
+        border-radius: 10px;
+        padding: 5px;
+      }
+
+      /* Hide the pause icon initially */
+      #pause-icon {
+        display: none;
+      }
+      body{
+        font-family: 'Baumans', cursive;
+      }
     </style>
+
     <script>
       // Delay the animation to allow time for other page loading processes
       setTimeout(function () {
         var mainContent = document.getElementById("main-content");
         mainContent.classList.add("page-opening-animation-active"); // Add the animation class
       }, 1000); // Adjust the delay (in milliseconds) as needed
+      
+      // Get audio element and play/pause button
+      var audio = document.getElementById('background-audio');
+      var playPauseButton = document.getElementById('play-pause-button');
+      var playIcon = document.getElementById('play-icon');
+      var pauseIcon = document.getElementById('pause-icon');
+      
+      // Add click event listener to the play/pause button
+      playPauseButton.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play();
+          playIcon.style.display = 'none';
+          pauseIcon.style.display = 'inline';
+        } else {
+          audio.pause();
+          playIcon.style.display = 'inline';
+          pauseIcon.style.display = 'none';
+        }
+      });
     </script>
   </body>
 </html>
